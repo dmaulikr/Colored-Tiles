@@ -14,6 +14,7 @@
 		E07FB47F1CF6018B005EBCE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E07FB47D1CF6018B005EBCE2 /* LaunchScreen.storyboard */; };
 		E07FB48A1CF6018B005EBCE2 /* iColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07FB4891CF6018B005EBCE2 /* iColorTests.swift */; };
 		E07FB4951CF6018B005EBCE2 /* iColorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07FB4941CF6018B005EBCE2 /* iColorUITests.swift */; };
+		E07FB4A31CF60D12005EBCE2 /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07FB4A21CF60D12005EBCE2 /* CommonUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E07FB4901CF6018B005EBCE2 /* iColorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iColorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07FB4941CF6018B005EBCE2 /* iColorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iColorUITests.swift; sourceTree = "<group>"; };
 		E07FB4961CF6018B005EBCE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E07FB4A21CF60D12005EBCE2 /* CommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				E07FB47B1CF6018A005EBCE2 /* Assets.xcassets */,
 				E07FB47D1CF6018B005EBCE2 /* LaunchScreen.storyboard */,
 				E07FB4801CF6018B005EBCE2 /* Info.plist */,
+				E07FB4A21CF60D12005EBCE2 /* CommonUtils.swift */,
 			);
 			path = iColor;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				TargetAttributes = {
 					E07FB4701CF6018A005EBCE2 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = J5HSBWU8JR;
 					};
 					E07FB4841CF6018B005EBCE2 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -257,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E07FB4771CF6018A005EBCE2 /* ViewController.swift in Sources */,
+				E07FB4A31CF60D12005EBCE2 /* CommonUtils.swift in Sources */,
 				E07FB4751CF6018A005EBCE2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iColor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = game.LePhuTran.iColor;
@@ -412,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iColor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = game.LePhuTran.iColor;

@@ -9,23 +9,87 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     @IBOutlet var tilesView: UIView!
+    @IBOutlet weak var scoreLbl: UILabel!
+    @IBOutlet weak var counterLbl: UILabel!
+    
+    var timer:NSTimer!
+    
     var numOfTilesPerRow:Int!
     var numOfTiles:Int!
     var correctTileIndex:Int!
+    var score:Int = 0
+    var red:Int!
+    var green:Int!
+    var blue:Int!
+    var adjust:Int = 15
+    var seconds:Int = 60
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        createTimer()
         randomNumOfTilesPerRow()
         createTiles()
         setCorrectTile()
+        
+    }
+    
+    func createTimer() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.setCounter), userInfo: nil, repeats: true)
+    }
+    
+    func setCounter() {
+        if seconds > 0 {
+            seconds -= 1
+            var counterString = ""
+            if seconds < 10 {
+                counterString += "0" + String(seconds)
+            } else {
+                counterString += String(seconds)
+            }
+            counterLbl.text = counterString
+        } else {
+            timer.invalidate()
+        }
     }
     
     func randomNumOfTilesPerRow() {
-        numOfTilesPerRow = Int(arc4random_uniform(6)) + 4
+        switch score {
+        case 0:
+            numOfTilesPerRow = 2
+        case 1:
+            numOfTilesPerRow = 3
+        case 2:
+            numOfTilesPerRow = 4
+        case 3...5:
+            numOfTilesPerRow = 5
+        case 6...9:
+            numOfTilesPerRow = 6
+        case 10...13:
+            numOfTilesPerRow = 7
+        case 14...17:
+            numOfTilesPerRow = 8
+        default:
+            numOfTilesPerRow = 9
+        }
+        setAdjustValue(score)
         numOfTiles = numOfTilesPerRow * numOfTilesPerRow
         correctTileIndex = Int(arc4random_uniform(UInt32(numOfTiles-1)) + 1)
+    }
+    
+    func createColor() {
+        red = Int(arc4random_uniform(255))
+        blue = Int(arc4random_uniform(255))
+        green = Int(arc4random_uniform(255))
+        if red < 100 && blue < 100 && green > 100 {
+            createColor()
+        }
+        if red > 180 && green > 180 && blue > 180 {
+            createColor()
+        }
+        print(red)
+        print(green)
+        print(blue)
     }
     
     func createTiles() {
@@ -33,6 +97,7 @@ class ViewController: UIViewController {
         tilesView.layer.cornerRadius = 5
         tilesView.backgroundColor = UIColor.whiteColor()
         let widthTile = tilesView.frame.size.width / CGFloat(numOfTilesPerRow)
+        createColor()
         var currentTile = -1
         for y in 0..<numOfTilesPerRow {
             let yOriginTile = widthTile * CGFloat(y)
@@ -41,7 +106,8 @@ class ViewController: UIViewController {
                 let xOriginTile = widthTile * CGFloat(i)
                 let button = UIButton(type: .Custom)
                 button.frame = CGRectMake(xOriginTile, yOriginTile, widthTile, widthTile)
-                button.backgroundColor = UIColor(netHex: 0xF6416C)
+                let color = UIColor(red: red, green: green, blue: blue)
+                button.backgroundColor = color
                 button.tag = currentTile
                 button.layer.cornerRadius = 5
                 button.layer.borderWidth = 0.5
@@ -54,9 +120,45 @@ class ViewController: UIViewController {
         }
     }
     
+    func setAdjustValue(aScore:Int) {
+        switch aScore {
+        case 0:
+            adjust = 45
+        case 1:
+            adjust = 40
+        case 2:
+            adjust = 35
+        case 3...5:
+            adjust = 30
+        case 6...9:
+            adjust = 25
+        case 10...13:
+            adjust = 20
+        case 14...17:
+            adjust = 15
+        default:
+            adjust = 10
+        }
+
+    }
+    
     func setCorrectTile() {
         if let button = self.tilesView.viewWithTag(correctTileIndex) as! UIButton? {
-            button.backgroundColor = UIColor.redColor()
+            red! += adjust
+            if red > 255 {
+                red = 255
+            }
+            green! += adjust
+            if green > 255 {
+                green = 255
+            }
+            blue! += adjust
+            if blue > 255 {
+                blue = 255
+            }
+            
+            let color = UIColor(red: red, green: green, blue: blue)
+            button.backgroundColor = color
             button.addTarget(self, action: #selector(ViewController.correctButtonTapped(_:)), forControlEvents: .TouchUpInside)
         }
     }
@@ -71,6 +173,9 @@ class ViewController: UIViewController {
     
     func correctButtonTapped(sender:UIButton) {
         print("Correct Button Tapped")
+        score += 1
+        let scoreStr = "Score: " + String(score)
+        scoreLbl.text = scoreStr
         self.tilesView.subviews.forEach({ $0.removeFromSuperview() })
         self.randomNumOfTilesPerRow()
         self.createTiles()

@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet var tilesView: UIView!
     @IBOutlet weak var scoreLbl: UILabel!
-    @IBOutlet weak var counterLbl: UILabel!
+    @IBOutlet weak var cirularIndicatorVIew: ProgressView!
     
     var timer:NSTimer!
     
@@ -31,7 +31,6 @@ class ViewController: UIViewController {
         randomNumOfTilesPerRow()
         createTiles()
         setCorrectTile()
-        
     }
     
     func createTimer() {
@@ -41,15 +40,12 @@ class ViewController: UIViewController {
     func setCounter() {
         if seconds > 0 {
             seconds -= 1
-            var counterString = ""
-            if seconds < 10 {
-                counterString += "0" + String(seconds)
-            } else {
-                counterString += String(seconds)
-            }
-            counterLbl.text = counterString
+            let progress = Float(60 - seconds)/60
+            cirularIndicatorVIew.animateProgressViewToProgress(progress)
+            cirularIndicatorVIew.updateProgressViewLabelWithProgress(seconds)
         } else {
             timer.invalidate()
+            cirularIndicatorVIew.hideProgressView()
         }
     }
     
@@ -94,7 +90,6 @@ class ViewController: UIViewController {
     
     func createTiles() {
         tilesView.layoutIfNeeded()
-        tilesView.layer.cornerRadius = 5
         tilesView.backgroundColor = UIColor.whiteColor()
         let widthTile = tilesView.frame.size.width / CGFloat(numOfTilesPerRow)
         createColor()
@@ -109,7 +104,6 @@ class ViewController: UIViewController {
                 let color = UIColor(red: red, green: green, blue: blue)
                 button.backgroundColor = color
                 button.tag = currentTile
-                button.layer.cornerRadius = 5
                 button.layer.borderWidth = 0.5
                 button.layer.borderColor = UIColor.whiteColor().CGColor
                 if currentTile != correctTileIndex {
@@ -174,7 +168,7 @@ class ViewController: UIViewController {
     func correctButtonTapped(sender:UIButton) {
         print("Correct Button Tapped")
         score += 1
-        let scoreStr = "Score: " + String(score)
+        let scoreStr = String(score)
         scoreLbl.text = scoreStr
         self.tilesView.subviews.forEach({ $0.removeFromSuperview() })
         self.randomNumOfTilesPerRow()

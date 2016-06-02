@@ -19,6 +19,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsB-HE-yN5" customClass="ProgressView" customModule="iColor" customModuleProvider="target">
+                                <rect key="frame" x="225" y="0.0" width="150" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IA3-oj-e46"/>
+                                    <constraint firstAttribute="width" secondItem="gsB-HE-yN5" secondAttribute="height" multiplier="1:1" id="VXB-Zb-5eL"/>
+                                    <constraint firstAttribute="width" constant="150" id="eoZ-d3-glR"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="IA3-oj-e46"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwb-Vj-WYM">
                                 <rect key="frame" x="15" y="15" width="570" height="570"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -26,43 +40,45 @@
                                     <constraint firstAttribute="width" secondItem="wwb-Vj-WYM" secondAttribute="height" multiplier="1:1" id="Ozg-wM-p0U"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCn-RO-Xni">
-                                <rect key="frame" x="258" y="0.0" width="85" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUs-HD-FNQ">
+                                <rect key="frame" x="490" y="10" width="100" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="phH-PJ-bWt"/>
+                                    <constraint firstAttribute="width" constant="100" id="Jn3-sy-Cum"/>
+                                    <constraint firstAttribute="height" constant="48" id="X6O-es-d6Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="50"/>
-                                <color key="textColor" red="0.97254901960784312" green="0.95294117647058818" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUs-HD-FNQ">
-                                <rect key="frame" x="450" y="0.0" width="150" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Jn3-sy-Cum"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                                 <color key="textColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.72156862745098038" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="gsB-HE-yN5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5Rh-ty-kIv"/>
                             <constraint firstItem="wwb-Vj-WYM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AdC-Nw-5F4"/>
                             <constraint firstItem="wwb-Vj-WYM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="D0X-nK-h5m"/>
-                            <constraint firstItem="nCn-RO-Xni" firstAttribute="centerX" secondItem="wwb-Vj-WYM" secondAttribute="centerX" id="I0e-TL-qn5"/>
-                            <constraint firstAttribute="trailing" secondItem="UUs-HD-FNQ" secondAttribute="trailing" id="Wki-hc-QeC"/>
-                            <constraint firstItem="UUs-HD-FNQ" firstAttribute="bottom" secondItem="nCn-RO-Xni" secondAttribute="bottom" id="cNN-Wg-hTN"/>
-                            <constraint firstItem="UUs-HD-FNQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jkI-RM-Nct"/>
-                            <constraint firstItem="UUs-HD-FNQ" firstAttribute="top" secondItem="nCn-RO-Xni" secondAttribute="top" id="kAu-5c-9nR"/>
+                            <constraint firstItem="gsB-HE-yN5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LVk-51-sLQ"/>
+                            <constraint firstAttribute="trailing" secondItem="UUs-HD-FNQ" secondAttribute="trailing" constant="10" id="Wki-hc-QeC"/>
+                            <constraint firstAttribute="trailing" secondItem="gsB-HE-yN5" secondAttribute="trailing" constant="320" id="dfa-Ui-cC3"/>
+                            <constraint firstItem="UUs-HD-FNQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="jkI-RM-Nct"/>
                             <constraint firstItem="wwb-Vj-WYM" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.95" id="pl2-9F-edA"/>
+                            <constraint firstItem="gsB-HE-yN5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uj6-6u-CeE"/>
+                            <constraint firstItem="gsB-HE-yN5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="100" id="vGc-ll-MgY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UUs-HD-FNQ" secondAttribute="bottom" constant="552" id="wmK-qF-cUS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LVk-51-sLQ"/>
+                                <exclude reference="dfa-Ui-cC3"/>
+                                <exclude reference="vGc-ll-MgY"/>
+                                <exclude reference="wmK-qF-cUS"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="counterLbl" destination="nCn-RO-Xni" id="daf-kQ-3Vd"/>
+                        <outlet property="cirularIndicatorVIew" destination="gsB-HE-yN5" id="KXh-K4-R9B"/>
                         <outlet property="scoreLbl" destination="UUs-HD-FNQ" id="QnN-4x-T1U"/>
                         <outlet property="tilesView" destination="wwb-Vj-WYM" id="iXJ-ra-xmd"/>
                     </connections>

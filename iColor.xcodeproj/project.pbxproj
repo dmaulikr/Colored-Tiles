@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75BEF0491D002B4A0016E7F7 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BEF0481D002B4A0016E7F7 /* ProgressView.swift */; };
 		E07FB4751CF6018A005EBCE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07FB4741CF6018A005EBCE2 /* AppDelegate.swift */; };
 		E07FB4771CF6018A005EBCE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07FB4761CF6018A005EBCE2 /* ViewController.swift */; };
 		E07FB47A1CF6018A005EBCE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E07FB4781CF6018A005EBCE2 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75BEF0481D002B4A0016E7F7 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		E07FB4711CF6018A005EBCE2 /* iColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07FB4741CF6018A005EBCE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E07FB4761CF6018A005EBCE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				E07FB4741CF6018A005EBCE2 /* AppDelegate.swift */,
 				E07FB4761CF6018A005EBCE2 /* ViewController.swift */,
+				75BEF0481D002B4A0016E7F7 /* ProgressView.swift */,
 				E07FB4781CF6018A005EBCE2 /* Main.storyboard */,
 				E07FB47B1CF6018A005EBCE2 /* Assets.xcassets */,
 				E07FB47D1CF6018B005EBCE2 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E07FB4771CF6018A005EBCE2 /* ViewController.swift in Sources */,
+				75BEF0491D002B4A0016E7F7 /* ProgressView.swift in Sources */,
 				E07FB4A31CF60D12005EBCE2 /* CommonUtils.swift in Sources */,
 				E07FB4751CF6018A005EBCE2 /* AppDelegate.swift in Sources */,
 			);
@@ -491,6 +495,7 @@
 				E07FB49B1CF6018B005EBCE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E07FB49C1CF6018B005EBCE2 /* Build configuration list for PBXNativeTarget "iColorTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +504,7 @@
 				E07FB49E1CF6018B005EBCE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E07FB49F1CF6018B005EBCE2 /* Build configuration list for PBXNativeTarget "iColorUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +513,7 @@
 				E07FB4A11CF6018B005EBCE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -25,4 +25,8 @@ extension UIColor {
     convenience init(netHex:Int) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
+    
+    class func appYellowFont() -> UIColor {
+        return self.init(colorLiteralRed: 248.0/255.0, green: 243.0/255.0, blue: 212.0/255.0, alpha: 1.0)
+    }
 }

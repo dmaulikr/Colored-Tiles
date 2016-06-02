@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet var tilesView: UIView!
     @IBOutlet weak var scoreLbl: UILabel!
     @IBOutlet weak var cirularIndicatorVIew: ProgressView!
+    @IBOutlet weak var soundBtn: UIButton!
+    
     
     var timer:NSTimer!
     
@@ -24,13 +26,22 @@ class ViewController: UIViewController {
     var blue:Int!
     var adjust:Int = 15
     var seconds:Int = 60
+    
+    var didTunrOffSound:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+
         createTimer()
         randomNumOfTilesPerRow()
         createTiles()
         setCorrectTile()
+        
+        let menu = MenuView(frame: CGRectMake(0,0,250,250))
+        menu.center = self.view.center
+        menu.contentMode = .ScaleAspectFit
+        self.view.addSubview(menu)
     }
     
     func createTimer() {
@@ -157,10 +168,17 @@ class ViewController: UIViewController {
         }
     }
     
-    func clearOldTiles() {
-        
+    @IBAction func soundBtnDidTapped(sender: AnyObject) {
+        if didTunrOffSound == false {
+            let image = UIImage(named: "soundoffwhite.png")
+            soundBtn.setImage(image, forState: .Normal)
+            didTunrOffSound = true
+        } else {
+            let image = UIImage(named: "soundonwhite.png")
+            soundBtn.setImage(image, forState: .Normal)
+            didTunrOffSound = false
+        }
     }
-    
     func buttonTapped(sender:UIButton) {
         print("Button tapped")
     }

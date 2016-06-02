@@ -33,7 +33,8 @@ class ProgressView: UIView {
         progressLabel = UILabel(frame: CGRectMake(0.0, 0.0, CGRectGetWidth(frame), 60.0))
         progressLabel.textAlignment = .Center
         progressLabel.text = "60"
-        progressLabel.textColor = UIColor.appYellowFont()
+//        progressLabel.textColor = UIColor.appYellowFont()
+        progressLabel.textColor = UIColor.whiteColor()
         progressLabel.font = UIFont(name: "Avenir-Heavy", size: 50.0)
         progressLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(progressLabel)

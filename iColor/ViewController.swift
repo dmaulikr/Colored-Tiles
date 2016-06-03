@@ -26,37 +26,100 @@ class ViewController: UIViewController {
     var blue:Int!
     var adjust:Int = 15
     var seconds:Int = 60
+    var menuView:MenuView!
     
     var didTunrOffSound:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
 
+        startNewGame()
+//        createMenuView()
+        
+    }
+    
+    func startNewGame() {
         createTimer()
         randomNumOfTilesPerRow()
         createTiles()
         setCorrectTile()
-        
-        let menu = MenuView(frame: CGRectMake(0,0,250,250))
-        menu.center = self.view.center
-        menu.contentMode = .ScaleAspectFit
-        self.view.addSubview(menu)
     }
     
     func createTimer() {
+        if timer != nil {
+            if timer.valid {
+                timer.invalidate()
+            }
+        }
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.setCounter), userInfo: nil, repeats: true)
+    }
+    
+    func createMenuView() {
+        if menuView != nil {
+            menuView.removeFromSuperview()
+        }
+        menuView = MenuView(frame: CGRectMake(0,-300,300,300))
+        menuView.center.x = self.view.center.x
+        menuView.contentMode = .ScaleAspectFit
+        self.view.addSubview(menuView)
+        
+        
+        let leftGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.retry(_:)))
+        self.menuView.setTapGestureToLeftView(leftGesture)
+        
+        let rightGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.backToMenu(_:)))
+        self.menuView.setTapGestureToRightView(rightGesture)
+        animateMenuView()
+    }
+    
+    func retry(sender:UITapGestureRecognizer) {
+        print("retry")
+        hideMenuView()
+    }
+    
+    func backToMenu(sender:UITapGestureRecognizer) {
+        print("Back to menu")
+    }
+    
+    func animateMenuView() {
+        self.view.subviews.forEach({
+            if $0 != menuView {
+                $0.userInteractionEnabled = false
+            }
+        })
+        UIView.animateWithDuration(2.0, animations: {
+            var menuFrame = self.menuView.frame
+            menuFrame.origin.y = self.view.center.y - menuFrame.size.width/2
+            self.menuView.frame = menuFrame
+            }, completion: nil)
+    }
+    
+    func hideMenuView() {
+        self.menuView.removeFromSuperview()
+        self.view.subviews.forEach({ $0.userInteractionEnabled = true })
+        
+        UIView.animateWithDuration(1.0, animations: { 
+            var menuFrame = self.menuView.frame
+            menuFrame.origin.y -= menuFrame.size.width
+            self.menuView.frame = menuFrame
+            }) { (completed) in
+                self.cirularIndicatorVIew.hideProgressView()
+                self.seconds = 60
+                self.startNewGame()
+        }
     }
     
     func setCounter() {
         if seconds > 0 {
             seconds -= 1
             let progress = Float(60 - seconds)/60
+            print(progress)
             cirularIndicatorVIew.animateProgressViewToProgress(progress)
             cirularIndicatorVIew.updateProgressViewLabelWithProgress(seconds)
         } else {
             timer.invalidate()
-            cirularIndicatorVIew.hideProgressView()
+//            cirularIndicatorVIew.hideProgressView()
+            createMenuView()
         }
     }
     

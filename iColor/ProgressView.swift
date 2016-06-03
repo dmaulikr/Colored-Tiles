@@ -43,9 +43,40 @@ class ProgressView: UIView {
         addConstraint(NSLayoutConstraint(item: self, attribute: .CenterY, relatedBy: .Equal, toItem: progressLabel, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
     }
     
+    //Rotate counter clockwise
+//    private func createProgressLayer() {
+//        let startAngle = CGFloat(M_PI_2)
+//        let endAngle = CGFloat(M_PI * 2 + M_PI_2)
+//        let centerPoint = CGPointMake(CGRectGetWidth(frame)/2 , CGRectGetHeight(frame)/2)
+//        
+//        let gradientMaskLayer = gradientMask()
+//        progressLayer.path = UIBezierPath(arcCenter:centerPoint, radius: CGRectGetWidth(frame)/2 - 30.0, startAngle:startAngle, endAngle:endAngle, clockwise: true).CGPath
+//        progressLayer.backgroundColor = UIColor.clearColor().CGColor
+//        progressLayer.fillColor = nil
+//        progressLayer.strokeColor = UIColor.blackColor().CGColor
+//        progressLayer.lineWidth = 5.0
+//        progressLayer.strokeStart = 0.0
+//        progressLayer.strokeEnd = 0.0
+//        
+//        gradientMaskLayer.mask = progressLayer
+//        layer.addSublayer(gradientMaskLayer)
+//        
+//        let dashedLayer = CAShapeLayer()
+//        dashedLayer.strokeColor = UIColor(white: 1.0, alpha: 0.5).CGColor
+//        dashedLayer.fillColor = nil
+//        dashedLayer.lineDashPattern = [2, 4]
+//        dashedLayer.lineJoin = "round"
+//        dashedLayer.lineWidth = 5.0
+//        dashedLayer.path = progressLayer.path
+//        layer.insertSublayer(dashedLayer, below: progressLayer)
+//    }
+    
+    //Rotate clockwise
     private func createProgressLayer() {
-        let startAngle = CGFloat(M_PI_2)
-        let endAngle = CGFloat(M_PI * 2 + M_PI_2)
+        let startAngle = CGFloat(-M_PI_2)
+        print(startAngle)
+        let endAngle = CGFloat((M_PI + M_PI_2))
+        print(CGFloat((M_PI * 2 + M_PI_2)))
         let centerPoint = CGPointMake(CGRectGetWidth(frame)/2 , CGRectGetHeight(frame)/2)
         
         let gradientMaskLayer = gradientMask()
@@ -69,6 +100,7 @@ class ProgressView: UIView {
         dashedLayer.path = progressLayer.path
         layer.insertSublayer(dashedLayer, below: progressLayer)
     }
+
     
     private func gradientMask() -> CAGradientLayer {
         let gradientLayer = CAGradientLayer()
@@ -76,8 +108,10 @@ class ProgressView: UIView {
 
         gradientLayer.locations = [0.0, 1.0]
         
-        let colorTop: AnyObject = UIColor(red: 255.0/255.0, green: 213.0/255.0, blue: 63.0/255.0, alpha: 1.0).CGColor
-        let colorBottom: AnyObject = UIColor(red: 255.0/255.0, green: 198.0/255.0, blue: 5.0/255.0, alpha: 1.0).CGColor
+//        let colorTop: AnyObject = UIColor(red: 255.0/255.0, green: 213.0/255.0, blue: 63.0/255.0, alpha: 1.0).CGColor
+        let colorTop: AnyObject = UIColor.redColor().CGColor
+        let colorBottom: AnyObject = UIColor.redColor().CGColor
+//        let colorBottom: AnyObject = UIColor(red: 255.0/255.0, green: 198.0/255.0, blue: 5.0/255.0, alpha: 1.0).CGColor
         let arrayOfColors: [AnyObject] = [colorTop, colorBottom]
         gradientLayer.colors = arrayOfColors
         
@@ -87,7 +121,7 @@ class ProgressView: UIView {
     func hideProgressView() {
         progressLayer.strokeEnd = 0.0
         progressLayer.removeAllAnimations()
-        progressLabel.text = "00"
+        progressLabel.text = "60"
     }
     
     func animateProgressViewToProgress(progress: Float) {

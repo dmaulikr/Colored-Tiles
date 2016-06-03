@@ -3,13 +3,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuView" customModule="iColor" customModuleProvider="target">
             <connections>
+                <outlet property="leftBtnImgView" destination="i89-E4-BDq" id="x4j-Td-jrg"/>
+                <outlet property="leftView" destination="8SJ-T2-XBH" id="GqT-qH-z7r"/>
                 <outlet property="menuDetail" destination="YEc-6U-kqM" id="f5h-2G-OK1"/>
+                <outlet property="rightBtnImgView" destination="seT-U4-gP1" id="BpB-rW-cqT"/>
+                <outlet property="rightView" destination="6Lu-fT-Vma" id="pgQ-fr-yM9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,36 +25,80 @@
                     <rect key="frame" x="0.0" y="0.0" width="250" height="175"/>
                     <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="retryBtn.png" translatesAutoresizingMaskIntoConstraints="NO" id="cCa-W7-0zf">
-                    <rect key="frame" x="42" y="192" width="50" height="50"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SJ-T2-XBH">
+                    <rect key="frame" x="13" y="194" width="100" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retryBtn.png" translatesAutoresizingMaskIntoConstraints="NO" id="i89-E4-BDq">
+                            <rect key="frame" x="31" y="6" width="38" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="i89-E4-BDq" secondAttribute="height" multiplier="1:1" id="Plg-Eu-7Dv"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="V8I-kh-YGz"/>
+                        <constraint firstItem="i89-E4-BDq" firstAttribute="width" secondItem="8SJ-T2-XBH" secondAttribute="width" id="EeB-dh-oRg"/>
+                        <constraint firstItem="i89-E4-BDq" firstAttribute="centerY" secondItem="8SJ-T2-XBH" secondAttribute="centerY" id="N4Q-Fx-FSp"/>
+                        <constraint firstItem="i89-E4-BDq" firstAttribute="height" secondItem="8SJ-T2-XBH" secondAttribute="height" multiplier="0.75" id="QJK-0Y-wS2"/>
+                        <constraint firstItem="i89-E4-BDq" firstAttribute="centerX" secondItem="8SJ-T2-XBH" secondAttribute="centerX" id="u20-ub-SDk"/>
                     </constraints>
-                </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="menuBtn.png" translatesAutoresizingMaskIntoConstraints="NO" id="mbn-3g-4b3">
-                    <rect key="frame" x="151" y="192" width="50" height="50"/>
-                </imageView>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="EeB-dh-oRg"/>
+                        </mask>
+                    </variation>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Lu-fT-Vma">
+                    <rect key="frame" x="138" y="194" width="100" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBtn.png" translatesAutoresizingMaskIntoConstraints="NO" id="seT-U4-gP1">
+                            <rect key="frame" x="31" y="6" width="38" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="seT-U4-gP1" secondAttribute="height" multiplier="1:1" id="8pd-UR-sEg"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="seT-U4-gP1" firstAttribute="height" secondItem="6Lu-fT-Vma" secondAttribute="height" multiplier="0.75" id="MLU-Vu-Nbr"/>
+                        <constraint firstItem="seT-U4-gP1" firstAttribute="centerX" secondItem="6Lu-fT-Vma" secondAttribute="centerX" id="Wze-L7-2Pl"/>
+                        <constraint firstItem="seT-U4-gP1" firstAttribute="centerY" secondItem="6Lu-fT-Vma" secondAttribute="centerY" id="uew-v5-5zL"/>
+                        <constraint firstItem="seT-U4-gP1" firstAttribute="width" secondItem="seT-U4-gP1" secondAttribute="height" multiplier="1:1" id="zga-87-Nel"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="zga-87-Nel"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="6Lu-fT-Vma" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="10u-Mg-VGW"/>
                 <constraint firstItem="YEc-6U-kqM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="4sS-RL-utu"/>
-                <constraint firstItem="mbn-3g-4b3" firstAttribute="leading" secondItem="cCa-W7-0zf" secondAttribute="trailing" constant="59" id="7JD-om-gJB"/>
                 <constraint firstItem="YEc-6U-kqM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9n9-KC-pdA"/>
-                <constraint firstItem="mbn-3g-4b3" firstAttribute="top" secondItem="cCa-W7-0zf" secondAttribute="top" id="IOK-sM-ZUf"/>
-                <constraint firstAttribute="trailing" secondItem="mbn-3g-4b3" secondAttribute="trailing" constant="49" id="NT5-jZ-sQ7"/>
-                <constraint firstItem="cCa-W7-0zf" firstAttribute="top" secondItem="YEc-6U-kqM" secondAttribute="bottom" constant="17" id="Qvh-zu-8Q4"/>
-                <constraint firstItem="mbn-3g-4b3" firstAttribute="bottom" secondItem="cCa-W7-0zf" secondAttribute="bottom" id="VDw-cQ-XHQ"/>
-                <constraint firstItem="cCa-W7-0zf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="42" id="cLj-m0-AWA"/>
-                <constraint firstItem="cCa-W7-0zf" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="g9s-MP-NyL"/>
+                <constraint firstItem="6Lu-fT-Vma" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.5" id="HAT-gB-gbh"/>
+                <constraint firstItem="8SJ-T2-XBH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.75" id="WC5-Dt-vCQ"/>
+                <constraint firstItem="8SJ-T2-XBH" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.4" id="a4R-C6-8zN"/>
+                <constraint firstItem="6Lu-fT-Vma" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.2" id="qIx-Cl-hEf"/>
+                <constraint firstItem="6Lu-fT-Vma" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.75" id="rRi-Vy-usy"/>
+                <constraint firstItem="8SJ-T2-XBH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="0.5" id="t3G-kN-Ayk"/>
                 <constraint firstAttribute="trailing" secondItem="YEc-6U-kqM" secondAttribute="trailing" id="us2-xE-O5Y"/>
                 <constraint firstItem="YEc-6U-kqM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wnK-4O-L9o"/>
+                <constraint firstItem="8SJ-T2-XBH" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.2" id="yh5-Cw-8qN"/>
                 <constraint firstItem="YEc-6U-kqM" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="zGb-U8-hkl"/>
+                <constraint firstItem="6Lu-fT-Vma" firstAttribute="centerY" secondItem="8SJ-T2-XBH" secondAttribute="centerY" id="zTC-e4-KKQ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="rRi-Vy-usy"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>
